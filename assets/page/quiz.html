@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - The Pill</title>
+    <link href='https://fonts.googleapis.com/css?family=Itim' rel='stylesheet'>
+    <style>
+        body {
+            font-family: 'Itim', cursive;
+            margin: 0;
+            padding: 0;
+            background: url("../img/bg_night.png") no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        main {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .quiz-question {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .quiz-option {
+            background: rgba(101, 77, 53, 0.8);
+            color: #fff;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .quiz-option:hover {
+            background: rgba(165, 42, 42, 0.9);
+        }
+
+        .result-message {
+            display: none; /* Ẩn ban đầu */
+            font-size: 28px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(101, 77, 53, 0.8);
+            border-radius: 10px;
+            min-height: 50px; /* Để chiếm chỗ */
+        }
+
+        .result-message.correct {
+            color: #90EE90; /* Xanh lá cho đúng */
+        }
+
+        .result-message.wrong {
+            color: #FFB6C1; /* Hồng cho sai */
+        }
+
+        .quiz-options.hidden {
+            display: none; /* Ẩn options sau khi trả lời */
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="quiz-question" id="question-text"></div>
+        <div class="quiz-options" id="options-container">
+            <button class="quiz-option" onclick="answerQuiz('A')">A</button>
+            <button class="quiz-option" onclick="answerQuiz('B')">B</button>
+            <button class="quiz-option" onclick="answerQuiz('C')">C</button>
+            <button class="quiz-option" onclick="answerQuiz('D')">D</button>
+        </div>
+        <div class="result-message" id="result-message"></div>
+    </main>
+
+    <script>
+        // Câu hỏi mẫu (thêm nhiều nếu cần, random chọn 1 khi load)
+        const questions = [
+            {
+                question: 'Triết học MLN kế thừa nền triết học nào? (phương án đúng nhất)',
+                options: { A: 'Phương Tây', B: 'Phương Đông', C: 'Phương Đông và phương Tây.', D: 'Tất cả các phương án trả lời đều đúng' },
+                correct: 'A'
+            },
+            {
+                question: 'Vấn đề cơ bản của triết học hiện đại là mối quan hệ giữa:',
+                options: { A: 'Tư duy và tồn tại', B: 'Ý thức và vật chất.', C: 'Con người với tự nhiên', D: 'Ba nhận định trên đúng.' },
+                correct: 'D'
+            },
+            {
+                question: 'Đâu là 1 trong các chức năng của Triết học Mác - Lênin?',
+                options: { A: 'Chức năng thế giới quan', B: 'Chức năng quan sát', C: 'Chức năng phán đoán', D: 'Chức năng dự báo' },
+                correct: 'A'
+            },
+            {
+                question: 'Đâu là một phát minh vĩ đại của C.Mác đã đem lại một cuộc cách mạng trong triết học về xã hội ?',
+                options: { A: 'Chủ nghĩa duy vật lịch sử', B: 'Chủ nghĩa duy tâm khách quan ', C: 'Chủ nghĩa duy tâm chủ quan', D: 'Chủ nghĩa duy vật chất phát' },
+                correct: 'A'
+            },
+            {
+                question: 'Theo quan điểm duy vật lịch sử, sự ra đời của nhà nước là để giải quyết các mâu thuẫn trong xã hội vì:',
+                options: { A: 'Xã hội có mâu thuẫn thì cần phải có lực lượng đại diện cho xã hội để giải quyết nó ', B: 'Kinh nghiệm thực tế cho thấy đúng như vậy ', C: 'Nếu mâu thuẫn có thể giải quyết được thì không cần đến sự ra đời của nhà nước, sự ra đời của nó chỉ chứng tỏ rằng mâu thuẫn đã phát triển đến chỗ không thể giải quyết được nên cần đến sự ra đời của nhà nước.', D: 'Tất yếu của lịch sử nhân loại' },
+                correct: 'C'
+            },
+            {
+                question: 'Theo quan điểm của triết học Mác - Lênin, "tồn tại xã hội" bao gồm:',
+                options: { A: 'Dân số, ý thức xã hội, kiến trúc thượng tầng', B: 'Lực lượng sản xuất, dân số, phương thức sản xuất, ý thức xã hội ', C: 'Môi trường tự nhiên, quan hệ sản xuất, tâm lý xã hội, hệ tư tưởng ', D: 'Môi trường tự nhiên, dân số, phương thức sản xuất ' },
+                correct: 'D'
+            },
+            {
+                question: 'Chân lý là:',
+                options: { A: 'Ý kiến của những người có kinh nghiệm ', B: 'Sự phù hợp giữa tri thức với hiện thực khách quan và được thực tiễn kiểm nghiệm', C: 'Những quan điểm thuộc về đa số ', D: 'Là những thứ đúng đắn trong khoa học' },
+                correct: 'B'
+            },
+            {
+                question: 'Cái riêng là một phạm trù dùng để chỉ',
+                options: { A: 'Những mặt, những thuộc tính chung của nhiều sự vật ', B: 'Một sự vật, một hiện tượng, một quá trình riêng lẻ nhất định', C: 'Những nét, những thuộc tính chỉ có ở một sự vật', D: 'Các yếu tố cấu thành một hệ thống' },
+                correct: 'B'
+            },
+            {
+                question: 'Theo quan niệm của chủ nghĩa duy vật biện chứng về lịch sử thì trong xã hội có giai cấp, hệ tư tưởng thống trị xã hội bao giờ cũng là hệ tư tưởng của giai cấp',
+                options: { A: 'Tiên tiến nhất', B: 'Lãnh đạo xã hội', C: 'Thống trị xã hội', D: 'Đứng đầu xã hội' },
+                correct: 'C'
+            },
+            {
+                question: 'Định nghĩa phạm trù vật chất phụ thuộc chủ yếu vào',
+                options: { A: 'Sự phát triển khoa học kỹ thuật', B: 'Sự phát triển của logic hình thức', C: 'Sự phát triển của logic biện chứng', D: 'Tất cả các đáp án đều đúng ' },
+                correct: 'A'
+            },
+            {
+                question: 'Theo quan điểm của triết học Mác - Lênin, mối quan hệ giữa tồn tại xã hội và ý thức xã hội thể hiện như thế nào?',
+                options: { A: 'Ý thức xã hội quyết định tồn tại xã hội; tồn tại xã hội có tính độc lập tương đối, tác động trở lại ý thức xã hội', B: 'Tồn tại xã hội quyết định ý thức xã hội; ý thức xã hội có tính độc lập tương đối, tác động trở lại tồn tại xã hội ', C: 'Tồn tại xã hội và ý thức xã hội tồn tại độc lập, không liên quan gì đến nhau', D: 'Tồn tại xã hội quyết định tồn tại xã hội, ý thức xã hội quyết định ý thức xã hội ' },
+                correct: 'B'
+            },
+            {
+                question: 'Theo quan điểm của chủ nghĩa duy vật biện chứng thì thông qua vận động mà các dạng cụ thể của vật chất:',
+                options: { A: 'Tạo ra ý thức', B: 'Không tồn tại', C: 'Mất dẫn đi', D: 'Biểu hiện' },
+                correct: 'D'
+            },
+            {
+                question: 'Chất và lượng có mối quan hệ với nhau như thế nào?',
+                options: { A: 'Không có mối quan hệ gì với nhau', B: 'Chi có mối quan hệ giữa chất với lượng', C: 'Chỉ có mỗi quan hệ giữa lượng với chất', D: 'Có mối quan hệ biện chứng với nhau' },
+                correct: 'D'
+            },
+            {
+                question: 'Triết học duy tâm khách quan và duy tâm chủ quan đều có điểm chung là ',
+                options: { A: 'Đề cao lĩnh vực tinh thần của con người', B: 'Đề cao lĩnh vực vật chất và tinh thần của con người', C: 'Đề cao đời sống tâm linh của con người ' },
+                correct: 'A'
+            },
+            {
+                question: 'Theo quan điểm của triết học Mác Lênin, tiêu chí cơ bản để đánh giá phẩm chất của mỗi cá nhân',
+                options: { A: 'Địa vị xã hội của cá nhân', B: 'Thái độ, hành vi đạo đức của cá nhân', C: 'Sự thực hiện khả năng làm chủ đối với hoàn cảnh và hành động thực tiễn của cá nhân', D: 'Tất cả đều đúng' },
+                correct: 'D'
+            },
+            {
+                question: 'Trong tư liệu lao động, bộ phận nào cần được phát triển đi trước một bước so với đầu tư sản xuất trực tiếp? ',
+                options: { A: 'Kết cấu hạ tầng sản xuất', B: 'Công cụ lao động ', C: 'Các bộ phận chứa đựng, bảo quản', D: 'Các phương án trả lời đều đúng ' },
+                correct: 'A'
+            },
+            {
+                question: 'Tiêu chí nào là quan trọng nhất để phân biệt các hình thái kinh tế xã hội?',
+                options: { A: 'Lực lượng sản xuất ', B: 'Quan hệ sản xuất', C: 'Tồn tại xã hội ', D: 'Kiến trúc thượng tầng' },
+                correct: 'B'
+            },
+            {
+                question: 'Khái niệm nào chỉ sự quy định, sự tác động qua lại, sự chuyển hóa lẫn nhau giữa các sự vật, hiện tượng hay giữa các mặt, các yếu tố trong một sự vật, hiện tượng?',
+                options: { A: 'Mối liên hệ ', B: 'Sự phát triển', C: 'Sự thay đổi', D: 'Sự biến đổi' },
+                correct: 'A'
+            },
+            {
+                question: 'Khái niệm lực lượng sản xuất được hiểu là',
+                options: { A: 'Toàn bộ những năng lực thực tiễn dùng trong sản xuất của xã hội ', B: 'Toàn bộ những năng lực thực tiễn dùng trong phân phối của xã hội ' ,C: 'Toàn bộ những năng lực thực tiễn dùng trong tiêu dùng của xã hội', D: 'Toàn bộ những năng lực thực tiễn dùng trong hoạch định của xã hội ' },
+                correct: 'A'
+            },
+            {
+                question: 'Cơ sở của sự tồn tại và phát triển xã hội có nguồn gốc trực tiếp từ đâu?',
+                options: { A: 'Nền tảng xã hội ', B: 'Sản xuất vật chất', C: 'Thế giới vật chất', D: 'Thế giới khách quan' },
+                correct: 'B'
+            }
+            // Thêm câu hỏi khác...
+
+        ];
+
+        // Random chọn 1 câu hỏi khi load
+        const randomQuestionIndex = Math.floor(Math.random() * questions.length);
+        const selectedQuestion = questions[randomQuestionIndex];
+
+        function getScores() {
+            return JSON.parse(localStorage.getItem('gameScores'));
+        }
+
+        function updateScores(newScores) {
+            localStorage.setItem('gameScores', JSON.stringify(newScores));
+        }
+
+        function loadQuestion() {
+            document.getElementById('question-text').innerHTML = selectedQuestion.question + '<br>' +
+                'A: ' + selectedQuestion.options.A + '<br>' +
+                'B: ' + selectedQuestion.options.B + '<br>' +
+                'C: ' + selectedQuestion.options.C + '<br>' +
+                'D: ' + selectedQuestion.options.D;
+        }
+
+        function answerQuiz(answer) {
+            const scores = getScores();
+            let newScores = { ...scores };
+
+            // Ẩn options
+            document.getElementById('options-container').classList.add('hidden');
+
+            if (answer === selectedQuestion.correct) {
+                newScores.player += 1;
+                document.getElementById('result-message').textContent = 'Đúng! Bạn +1 điểm.';
+                document.getElementById('result-message').classList.add('correct');
+            } else {
+                newScores.ai += 1;
+                document.getElementById('result-message').textContent = 'Sai! AI +1 điểm.';
+                document.getElementById('result-message').classList.add('wrong');
+            }
+
+            updateScores(newScores);
+
+            // Hiển thị message
+            document.getElementById('result-message').style.display = 'block';
+
+            // Sau 3s, chuyển về Point.html
+            setTimeout(() => {
+                window.location.href = 'Point.html';
+            }, 3000);
+        }
+
+        // Load câu hỏi đầu
+        loadQuestion();
+    </script>
+</body>
+</html>

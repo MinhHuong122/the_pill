@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Sự Kiện - The Pill</title>
+    <link href='https://fonts.googleapis.com/css?family=Itim' rel='stylesheet'>
+    <style>
+        body {
+            font-family: 'Itim', cursive;
+            margin: 0;
+            padding: 0;
+            background: url("../img/bg_night.png") no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        main {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .event-message {
+            font-size: 28px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="event-message" id="event-text"></div>
+    </main>
+
+    <script>
+        // Khởi tạo scores nếu chưa có
+        if (!localStorage.getItem('gameScores')) {
+            localStorage.setItem('gameScores', JSON.stringify({ player: 0, ai: 0 }));
+        }
+
+        // Lấy scores
+        function getScores() {
+            return JSON.parse(localStorage.getItem('gameScores'));
+        }
+
+        function updateScores(newScores) {
+            localStorage.setItem('gameScores', JSON.stringify(newScores));
+        }
+
+        // Random event - Tách lẻ theo yêu cầu
+        const events = [
+            { text: 'Sự kiện tốt! Bạn +1 điểm.', playerDelta: 1 },
+            { text: 'Sự kiện tốt! AI -1 điểm.', aiDelta: -1 },
+            { text: 'Sự kiện xấu! Bạn -1 điểm.', playerDelta: -1 },
+            { text: 'Sự kiện xấu! AI +1 điểm.', aiDelta: 1 }
+        ];
+
+        const randomEvent = events[Math.floor(Math.random() * events.length)];
+        const scores = getScores();
+        let newScores = { ...scores };
+
+        if (randomEvent.playerDelta !== undefined) {
+            newScores.player += randomEvent.playerDelta;
+        }
+        if (randomEvent.aiDelta !== undefined) {
+            newScores.ai += randomEvent.aiDelta;
+        }
+
+
+        // Cập nhật scores
+        updateScores(newScores);
+
+        // Hiển thị message
+        document.getElementById('event-text').textContent = randomEvent.text ;
+
+        // Sau 3s, chuyển về Point.html
+        setTimeout(() => {
+            window.location.href = 'point.html';
+        }, 3000);
+    </script>
+</body>
+</html>

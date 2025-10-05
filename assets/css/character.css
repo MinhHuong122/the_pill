@@ -1,0 +1,269 @@
+/* Reset và font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: rgba(215, 171, 128, 1);
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(215, 171, 128, 1);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: rgba(101, 77, 53, 0.9); /* Nâu trong suốt */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    color: rgba(215, 171, 128, 1);
+    gap: 10px;
+    font-family: 'Irish Grover', cursive;
+}
+
+.logo-img {
+    width: 30px;
+    height: 30px;
+}
+
+.nav {
+    display: flex;
+    gap: 30px;
+}
+
+.nav a {
+    font-family: 'Itim', sans-serif;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.nav a:hover {
+    color: #ffd700;
+}
+
+/* Main content */
+.main {
+    padding-top: 70px;
+    position: relative;
+    z-index: 2;
+    background: rgba(139, 69, 19, 0.1); /* Nền nhẹ cho section */
+    min-height: 100vh;
+}
+
+/* Section Nhân Vật */
+.characters-section {
+    background-image: url('../img/bg_day.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    max-height: 3000px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 90vh;
+    
+}
+
+.section-title {
+    padding-top: 90px;
+    font-family: 'Lalezar', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 120px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Bóng tối giống hình */
+    margin-bottom: 50px;
+    letter-spacing: 5px;
+    text-align: center;
+}
+
+
+/* Character Card */
+.card-header {
+    padding:30px;
+    text-align: center;
+    font-size: 60px;
+    color:black;
+    font-family: 'Lalezar', sans-serif;
+}
+.card-body {
+    background: rgba(236, 211, 173, 1); /* Nền nhạt hơn */
+    display: flex; /* Kích hoạt flexbox */
+    flex-direction: row; /* Xếp ngang: hình trái, text phải */
+    background: rgba(236, 211, 173, 1); /* Nền nhạt hơn như bạn thêm */
+
+    overflow: hidden; /* Ẩn tràn */
+    height: 600px; 
+}
+.card-body ul{
+    color: black;
+    font-family: 'Itim', sans-serif;
+    font-size: 26px;
+    line-height: 1.6;
+
+    padding: 20px;
+    margin-top : 20px;
+    text-align: justify;
+    overflow-y: auto; /* Cuộn dọc nếu nội dung dài */
+}
+
+/* Card Subtitle - Bên phải card-body, chứa ul/text */
+.card-subtitle {
+    flex: 1; /* Chiếm không gian còn lại bên phải hình */
+    padding: 20px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: rgba(245, 245, 220, 0.8); /* Nền nhạt beige overlay giống hình */
+    overflow-y: auto; /* Scroll nếu dài */
+}
+
+/* UL trong subtitle - Ẩn style mặc định, dùng custom bullet */
+.card-subtitle ul {
+    list-style: none; /* Bỏ bullet mặc định */
+    padding-left: 0;
+    margin: 60px;
+}
+
+.card-subtitle li {
+    position: relative;
+    padding-left: 30px; /* Khoảng cách cho bullet custom */
+    margin-bottom: 15px;
+    font-size: 24px; /* Size nhỏ hơn cho li, chính tả là 26px cho ul text */
+    line-height: 1.5;
+    color: #000;
+    text-align: justify;
+}
+
+
+.card-subtitle li::before {
+    content: "•"; /* Bullet tròn */
+    position: absolute;
+    left: 0;
+    color: #DAA520; /* Màu vàng nâu giống hình */
+    font-size: 28px; /* Lớn hơn cho nổi bật */
+    font-weight: bold;
+}
+
+
+.card-subtitle li {
+    font-size: 26px;
+    font-weight: bold;
+    color: #8B4513; /* Nâu đậm giống tiêu đề bullet trong hình */
+    margin-top: 10px;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(101, 77, 53, 0.9); /* Nâu trong suốt */
+    color: #fff;
+    position: relative;
+    z-index: 2;
+    margin-top: 50px;
+    font-family: 'Irish Grover', cursive;
+    font-size: 24px;
+    color: rgba(215, 171, 128, 1);
+}
+/* Responsive cho subtitle */
+@media (max-width: 768px) {
+    .header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav {
+        gap: 20px;
+    }
+
+    .characters-section {
+        max-width: 100%;
+        padding: 30px 10px;
+        gap: 20px;
+    }
+
+    .section-title {
+        font-size: 36px;
+    }
+
+    .character-card {
+        height: 400px;
+    }
+
+    .card-title {
+        font-size: 18px;
+    }
+
+    .card-quote {
+        font-size: 12px;
+    }
+
+    .card-body {
+        flex-direction: column; /* Dọc trên mobile */
+        height: auto;
+    }
+
+    .card-subtitle {
+        border-left: none;
+        border-top: 3px solid #DAA520; /* Viền trên thay vì trái */
+        padding: 15px;
+    }
+
+    .card-subtitle li {
+        font-size: 20px;
+        padding-left: 25px;
+    }
+
+    .card-subtitle ul li:first-child {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 28px;
+    }
+
+    .nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .card-subtitle li {
+        font-size: 18px;
+    }
+}
