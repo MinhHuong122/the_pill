@@ -81,6 +81,8 @@
             background: rgba(101, 77, 53, 0.8);
             border-radius: 10px;
             min-height: 50px; /* Để chiếm chỗ */
+            white-space: pre-line; /* Giữ dòng mới */
+            line-height: 1.4;
         }
 
         .result-message.correct {
@@ -114,102 +116,122 @@
             {
                 question: 'Triết học MLN kế thừa nền triết học nào? (phương án đúng nhất)',
                 options: { A: 'Phương Tây', B: 'Phương Đông', C: 'Phương Đông và phương Tây.', D: 'Tất cả các phương án trả lời đều đúng' },
-                correct: 'A'
+                correct: 'A',
+                explanation: ' Các nguồn gốc lý luận trực tiếp và chủ yếu của triết học Mác là Triết học cổ điển Đức, Kinh tế chính trị học cổ điển Anh và Chủ nghĩa xã hội không tưởng Pháp. Tất cả các nguồn gốc này đều thuộc về văn minh phương Tây.'
             },
             {
                 question: 'Vấn đề cơ bản của triết học hiện đại là mối quan hệ giữa:',
                 options: { A: 'Tư duy và tồn tại', B: 'Ý thức và vật chất.', C: 'Con người với tự nhiên', D: 'Ba nhận định trên đúng.' },
-                correct: 'D'
+                correct: 'D',
+                explanation: 'Giáo trình trích lời Ph. Ăngghen: "Vấn đề cơ bản lớn của mọi triết học, đặc biệt là của triết học hiện đại, là vấn đề quan hệ giữa tư duy với tồn tại". Thuật ngữ "tư duy và tồn tại" và "ý thức và vật chất" được dùng để chỉ cùng một vấn đề cơ bản. Mối quan hệ giữa con người với tự nhiên là một biểu hiện cụ thể của vấn đề cơ bản đó. Vì vậy, cả ba nhận định đều liên quan và có thể được coi là đúng trong một câu hỏi tổng hợp.'
             },
             {
                 question: 'Đâu là 1 trong các chức năng của Triết học Mác - Lênin?',
                 options: { A: 'Chức năng thế giới quan', B: 'Chức năng quan sát', C: 'Chức năng phán đoán', D: 'Chức năng dự báo' },
-                correct: 'A'
+                correct: 'A',
+                explanation: 'Giáo trình nêu rõ: "chức năng thế giới quan và chức năng phương pháp luận là hai chức năng cơ bản của triết học Mác - Lênin".'
             },
             {
                 question: 'Đâu là một phát minh vĩ đại của C.Mác đã đem lại một cuộc cách mạng trong triết học về xã hội ?',
                 options: { A: 'Chủ nghĩa duy vật lịch sử', B: 'Chủ nghĩa duy tâm khách quan ', C: 'Chủ nghĩa duy tâm chủ quan', D: 'Chủ nghĩa duy vật chất phát' },
-                correct: 'A'
+                correct: 'A',
+                explanation: 'Việc sáng tạo ra chủ nghĩa duy vật lịch sử được coi là thành tựu vĩ đại nhất của C. Mác, đưa quan điểm duy vật vào việc nghiên cứu xã hội. Giáo trình khẳng định: "Sáng tạo ra chủ nghĩa duy vật lịch sử là một cuộc cách mạng thực sự trong triết học về xã hội".'
             },
             {
                 question: 'Theo quan điểm duy vật lịch sử, sự ra đời của nhà nước là để giải quyết các mâu thuẫn trong xã hội vì:',
                 options: { A: 'Xã hội có mâu thuẫn thì cần phải có lực lượng đại diện cho xã hội để giải quyết nó ', B: 'Kinh nghiệm thực tế cho thấy đúng như vậy ', C: 'Nếu mâu thuẫn có thể giải quyết được thì không cần đến sự ra đời của nhà nước, sự ra đời của nó chỉ chứng tỏ rằng mâu thuẫn đã phát triển đến chỗ không thể giải quyết được nên cần đến sự ra đời của nhà nước.', D: 'Tất yếu của lịch sử nhân loại' },
-                correct: 'C'
+                correct: 'C',
+                explanation: 'Nhà nước ra đời chính là sản phẩm của xã hội có giai cấp, khi mâu thuẫn giai cấp trở nên không thể điều hòa được. Sự tồn tại của nhà nước là bằng chứng cho thấy các mâu thuẫn đó là không thể tự giải quyết.'
             },
             {
                 question: 'Theo quan điểm của triết học Mác - Lênin, "tồn tại xã hội" bao gồm:',
                 options: { A: 'Dân số, ý thức xã hội, kiến trúc thượng tầng', B: 'Lực lượng sản xuất, dân số, phương thức sản xuất, ý thức xã hội ', C: 'Môi trường tự nhiên, quan hệ sản xuất, tâm lý xã hội, hệ tư tưởng ', D: 'Môi trường tự nhiên, dân số, phương thức sản xuất ' },
-                correct: 'D'
+                correct: 'D',
+                explanation: '"Tồn tại xã hội" là toàn bộ sinh hoạt vật chất và điều kiện sinh hoạt vật chất của xã hội. Nó bao gồm các yếu tố vật chất như môi trường tự nhiên, dân số và yếu tố quyết định nhất là phương thức sản xuất. Các yếu tố như ý thức xã hội, tâm lý xã hội... thuộc về "ý thức xã hội".'
             },
             {
                 question: 'Chân lý là:',
                 options: { A: 'Ý kiến của những người có kinh nghiệm ', B: 'Sự phù hợp giữa tri thức với hiện thực khách quan và được thực tiễn kiểm nghiệm', C: 'Những quan điểm thuộc về đa số ', D: 'Là những thứ đúng đắn trong khoa học' },
-                correct: 'B'
+                correct: 'B',
+                explanation: 'Đây là định nghĩa về chân lý theo quan điểm duy vật biện chứng. Chân lý đòi hỏi tri thức phải phản ánh đúng thực tế khách quan và phải được kiểm tra, chứng minh qua hoạt động thực tiễn. Thực tiễn chính là "tiêu chuẩn khách quan của chân lý".'
             },
             {
                 question: 'Cái riêng là một phạm trù dùng để chỉ',
                 options: { A: 'Những mặt, những thuộc tính chung của nhiều sự vật ', B: 'Một sự vật, một hiện tượng, một quá trình riêng lẻ nhất định', C: 'Những nét, những thuộc tính chỉ có ở một sự vật', D: 'Các yếu tố cấu thành một hệ thống' },
-                correct: 'B'
+                correct: 'B',
+                explanation: '"Cái riêng" là phạm trù triết học dùng để chỉ một sự vật, một hiện tượng hay một quá trình tồn tại như một chỉnh thể độc lập, có giới hạn trong không gian và thời gian.'
             },
             {
                 question: 'Theo quan niệm của chủ nghĩa duy vật biện chứng về lịch sử thì trong xã hội có giai cấp, hệ tư tưởng thống trị xã hội bao giờ cũng là hệ tư tưởng của giai cấp',
                 options: { A: 'Tiên tiến nhất', B: 'Lãnh đạo xã hội', C: 'Thống trị xã hội', D: 'Đứng đầu xã hội' },
-                correct: 'C'
+                correct: 'C',
+                explanation: ' Giai cấp nào nắm giữ quyền lực về kinh tế và chính trị (giai cấp thống trị) thì cũng sẽ nắm giữ quyền lực về tinh thần, hệ tư tưởng của giai cấp đó sẽ trở thành hệ tư tưởng thống trị trong xã hội.'
             },
             {
                 question: 'Định nghĩa phạm trù vật chất phụ thuộc chủ yếu vào',
                 options: { A: 'Sự phát triển khoa học kỹ thuật', B: 'Sự phát triển của logic hình thức', C: 'Sự phát triển của logic biện chứng', D: 'Tất cả các đáp án đều đúng ' },
-                correct: 'A'
+                correct: 'A',
+                explanation: 'Quan niệm về vật chất luôn thay đổi và phát triển cùng với sự phát triển của nhận thức con người, đặc biệt là những thành tựu của khoa học tự nhiên. Giáo trình đã chỉ ra rằng, những phát minh lớn của khoa học tự nhiên cuối thế kỷ 19 đã làm "đảo lộn quan niệm về thế giới của vật lý học cổ điển", đòi hỏi triết học phải có định nghĩa mới về vật chất.'
             },
             {
                 question: 'Theo quan điểm của triết học Mác - Lênin, mối quan hệ giữa tồn tại xã hội và ý thức xã hội thể hiện như thế nào?',
                 options: { A: 'Ý thức xã hội quyết định tồn tại xã hội; tồn tại xã hội có tính độc lập tương đối, tác động trở lại ý thức xã hội', B: 'Tồn tại xã hội quyết định ý thức xã hội; ý thức xã hội có tính độc lập tương đối, tác động trở lại tồn tại xã hội ', C: 'Tồn tại xã hội và ý thức xã hội tồn tại độc lập, không liên quan gì đến nhau', D: 'Tồn tại xã hội quyết định tồn tại xã hội, ý thức xã hội quyết định ý thức xã hội ' },
-                correct: 'B'
+                correct: 'B',
+                explanation: 'Đây là nguyên lý cơ bản của chủ nghĩa duy vật lịch sử. Đời sống vật chất (tồn tại xã hội) quyết định đời sống tinh thần (ý thức xã hội), nhưng ý thức xã hội không thụ động mà có thể tác động, thúc đẩy hoặc kìm hãm sự phát triển của tồn tại xã hội.'
             },
             {
                 question: 'Theo quan điểm của chủ nghĩa duy vật biện chứng thì thông qua vận động mà các dạng cụ thể của vật chất:',
                 options: { A: 'Tạo ra ý thức', B: 'Không tồn tại', C: 'Mất dẫn đi', D: 'Biểu hiện' },
-                correct: 'D'
+                correct: 'D',
+                explanation: 'Vận động là phương thức tồn tại của vật chất. Mọi dạng vật chất chỉ có thể tồn tại và biểu hiện các thuộc tính của mình thông qua vận động.'
             },
             {
                 question: 'Chất và lượng có mối quan hệ với nhau như thế nào?',
                 options: { A: 'Không có mối quan hệ gì với nhau', B: 'Chi có mối quan hệ giữa chất với lượng', C: 'Chỉ có mỗi quan hệ giữa lượng với chất', D: 'Có mối quan hệ biện chứng với nhau' },
-                correct: 'D'
+                correct: 'D',
+                explanation: 'Mối quan hệ giữa lượng và chất là một trong ba quy luật cơ bản của phép biện chứng duy vật. Sự thay đổi về lượng đến một mức độ nhất định sẽ dẫn đến sự thay đổi về chất và ngược lại.'
             },
             {
                 question: 'Triết học duy tâm khách quan và duy tâm chủ quan đều có điểm chung là ',
                 options: { A: 'Đề cao lĩnh vực tinh thần của con người', B: 'Đề cao lĩnh vực vật chất và tinh thần của con người', C: 'Đề cao đời sống tâm linh của con người ' },
-                correct: 'A'
+                correct: 'A',
+                explanation: 'Cả hai trường phái này đều thuộc chủ nghĩa duy tâm, có điểm chung là thừa nhận ý thức, tinh thần là cái có trước và quyết định vật chất.'
             },
             {
                 question: 'Theo quan điểm của triết học Mác Lênin, tiêu chí cơ bản để đánh giá phẩm chất của mỗi cá nhân',
                 options: { A: 'Địa vị xã hội của cá nhân', B: 'Thái độ, hành vi đạo đức của cá nhân', C: 'Sự thực hiện khả năng làm chủ đối với hoàn cảnh và hành động thực tiễn của cá nhân', D: 'Tất cả đều đúng' },
-                correct: 'D'
+                correct: 'D',
+                explanation: 'Triết học Mác - Lênin đánh giá con người một cách toàn diện, dựa trên sự thống nhất giữa các yếu tố: thái độ, hành vi đạo đức (B) và đặc biệt là năng lực làm chủ hoàn cảnh, năng lực hoạt động thực tiễn để cải tạo thế giới (C). Địa vị xã hội (A) cũng là một yếu tố phản ánh vai trò của cá nhân trong xã hội.'
             },
             {
                 question: 'Trong tư liệu lao động, bộ phận nào cần được phát triển đi trước một bước so với đầu tư sản xuất trực tiếp? ',
                 options: { A: 'Kết cấu hạ tầng sản xuất', B: 'Công cụ lao động ', C: 'Các bộ phận chứa đựng, bảo quản', D: 'Các phương án trả lời đều đúng ' },
-                correct: 'A'
+                correct: 'A',
+                explanation: ' Kết cấu hạ tầng sản xuất (điện, đường, trường, trạm...) là điều kiện nền tảng để các hoạt động sản xuất trực tiếp có thể diễn ra. Do đó, nó cần được đầu tư phát triển đi trước một bước.'
             },
             {
                 question: 'Tiêu chí nào là quan trọng nhất để phân biệt các hình thái kinh tế xã hội?',
                 options: { A: 'Lực lượng sản xuất ', B: 'Quan hệ sản xuất', C: 'Tồn tại xã hội ', D: 'Kiến trúc thượng tầng' },
-                correct: 'B'
+                correct: 'B',
+                explanation: 'Mỗi hình thái kinh tế - xã hội được đặc trưng chủ yếu bởi một kiểu quan hệ sản xuất thống trị (ví dụ: quan hệ chủ nô - nô lệ, địa chủ - nông nô, tư sản - vô sản).'
             },
             {
                 question: 'Khái niệm nào chỉ sự quy định, sự tác động qua lại, sự chuyển hóa lẫn nhau giữa các sự vật, hiện tượng hay giữa các mặt, các yếu tố trong một sự vật, hiện tượng?',
                 options: { A: 'Mối liên hệ ', B: 'Sự phát triển', C: 'Sự thay đổi', D: 'Sự biến đổi' },
-                correct: 'A'
+                correct: 'A',
+                explanation: 'Đây chính là định nghĩa về phạm trù "mối liên hệ" theo quan điểm của phép biện chứng.'
             },
             {
                 question: 'Khái niệm lực lượng sản xuất được hiểu là',
                 options: { A: 'Toàn bộ những năng lực thực tiễn dùng trong sản xuất của xã hội ', B: 'Toàn bộ những năng lực thực tiễn dùng trong phân phối của xã hội ' ,C: 'Toàn bộ những năng lực thực tiễn dùng trong tiêu dùng của xã hội', D: 'Toàn bộ những năng lực thực tiễn dùng trong hoạch định của xã hội ' },
-                correct: 'A'
+                correct: 'A',
+                explanation: ' Lực lượng sản xuất biểu hiện mối quan hệ giữa con người với tự nhiên, bao gồm người lao động và tư liệu sản xuất (mà cốt lõi là công cụ lao động). Tổng hợp lại, đó chính là năng lực thực tiễn của xã hội trong việc chinh phục tự nhiên.'
             },
             {
                 question: 'Cơ sở của sự tồn tại và phát triển xã hội có nguồn gốc trực tiếp từ đâu?',
                 options: { A: 'Nền tảng xã hội ', B: 'Sản xuất vật chất', C: 'Thế giới vật chất', D: 'Thế giới khách quan' },
-                correct: 'B'
+                correct: 'B',
+                explanation: 'Chủ nghĩa duy vật lịch sử khẳng định sản xuất vật chất là nền tảng của mọi hoạt động xã hội, là cơ sở cho sự tồn tại và phát triển của xã hội loài người. Giáo trình ghi: "sản xuất vật chất là hành vi lịch sử đầu tiên của họ" và "là cơ sở của đời sống xã hội".'
             }
             // Thêm câu hỏi khác...
 
@@ -242,25 +264,27 @@
             // Ẩn options
             document.getElementById('options-container').classList.add('hidden');
 
+            let message = '';
             if (answer === selectedQuestion.correct) {
                 newScores.player += 1;
-                document.getElementById('result-message').textContent = 'Đúng! Bạn +1 điểm.';
+                message = 'Đúng! Bạn +1 điểm.\nĐáp án: ' + selectedQuestion.correct + '\nGiải thích: ' + selectedQuestion.explanation;
                 document.getElementById('result-message').classList.add('correct');
             } else {
                 newScores.ai += 1;
-                document.getElementById('result-message').textContent = 'Sai! AI +1 điểm.';
+                message = 'Sai! Đáp án đúng là ' + selectedQuestion.correct + '. AI +1 điểm.\nGiải thích: ' + selectedQuestion.explanation;
                 document.getElementById('result-message').classList.add('wrong');
             }
 
             updateScores(newScores);
 
             // Hiển thị message
+            document.getElementById('result-message').textContent = message;
             document.getElementById('result-message').style.display = 'block';
 
             // Sau 3s, chuyển về Point.html
             setTimeout(() => {
                 window.location.href = './point.html';
-            }, 3000);
+            }, 6000);
         }
 
         // Load câu hỏi đầu
